@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
 
     private Transform cameraTransform;
 
+    private Animator animator;
     
 
     // Ground Movement
@@ -68,13 +69,15 @@ public class Player : MonoBehaviour
 
         cameraTransform = Camera.main.transform;
 
+        animator = GetComponent<Animator>();
+
 
 
         // Set the raycast to be slightly beneath the player's feet
 
         playerHeight = GetComponent<CapsuleCollider>().height * transform.localScale.y;
 
-        raycastDistance = (playerHeight / 2) + 0.2f;
+        raycastDistance = (playerHeight / 2) + 0.5f;
 
 
 
@@ -121,6 +124,8 @@ public class Player : MonoBehaviour
             Vector3 rayOrigin = transform.position + Vector3.up * 0.1f;
 
             isGrounded = Physics.Raycast(rayOrigin, Vector3.down, raycastDistance, groundLayer);
+
+            animator.SetBool("inAir", !isGrounded);
 
         }
 
@@ -169,6 +174,11 @@ public class Player : MonoBehaviour
         velocity.x = targetVelocity.x;
 
         velocity.z = targetVelocity.z;
+
+        Debug.Log($"X Velocity: {velocity.x}");
+
+        animator.SetFloat("zSpeed", velocity.z);
+        animator.SetFloat("xSpeed", velocity.x);
 
         rb.linearVelocity = velocity;
 
@@ -220,6 +230,8 @@ public class Player : MonoBehaviour
 
         rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpForce, rb.linearVelocity.z); // Initial burst for the jump
 
+        animator.SetTrigger("jumpTrigger");
+
     }
 
 
@@ -251,5 +263,6 @@ public class Player : MonoBehaviour
     }
 
 }
+
 
 
