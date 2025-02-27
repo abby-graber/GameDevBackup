@@ -163,28 +163,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 313656127}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 011085437b6044cd7b9c75727b700ea9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  jumpForce: 5
-  isGrounded: 1
---- !u!114 &313656135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 313656127}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da8d53ba1af9c48dbaf276424bcd9cc4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mouseSensitivity: 2
-  MoveSpeed: 5
+  cameraTransform: {fileID: 963194228}
+  walkSpeed: 5
+  runSpeed: 10
+  friction: 10
   jumpForce: 10
   fallMultiplier: 2.5
   ascendMultiplier: 2
@@ -396,6 +383,9 @@ MonoBehaviour:
   cameraTarget: {fileID: 313656130}
   offset: {x: 0, y: 2, z: -10}
   smoothTime: 0.25
+  mouseSensitivity: 5
+  pitchMin: -30
+  pitchMax: 60
 --- !u!1001 &1322370313
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -458,9 +448,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1953271650171834, guid: dbf7a0c9d76b77a40af3104feac0641d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 313656131}
-    - targetCorrespondingSourceObject: {fileID: 1953271650171834, guid: dbf7a0c9d76b77a40af3104feac0641d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 313656135}
   m_SourcePrefab: {fileID: 100100000, guid: dbf7a0c9d76b77a40af3104feac0641d, type: 3}
 --- !u!1 &2125946785
 GameObject:

@@ -1,58 +1,182 @@
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class MovementController : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField] private Transform cameraTransform; // Assign your Main Camera's transform in the Inspector
+    private Animator animator;
 
-    Rigidbody rb;
+    // Ground Movement
+    private Rigidbody rb;
+    [SerializeField] private float walkSpeed = 5f;
 
-    public float moveSpeed = 5f;
-    public float jumpForce = 10;
+    [SerializeField] private float runSpeed = 10f;
 
-    public bool isGrounded = true;
+    private float moveSpeed;
+
+    private float moveHorizontal;
+    private float moveForward;
+    [SerializeField] private float friction = 10.0f;
+
+    // Jumping
+    [SerializeField] private float jumpForce = 10f;
+    [SerializeField] private float fallMultiplier = 2.5f; 
+    [SerializeField] private float ascendMultiplier = 2f;
+    
+    private bool isGrounded = true;
+    [SerializeField] private LayerMask groundLayer;
+    private float groundCheckTimer = 0f;
+    private float groundCheckDelay = 0.3f;
+    private float playerHeight;
+    private float raycastDistance;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        rb.freezeRotation = true;
+        animator = GetComponent<Animator>();
+
+        // Set the raycast to be slightly beneath the player's feet
+        playerHeight = GetComponent<CapsuleCollider>().height * transform.localScale.y;
+        raycastDistance = (playerHeight / 6) + 0.5f;
+
+        // Hides the mouse
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
-    // Update is called once per frame
+    void Update()
+    {
+        moveHorizontal = Input.GetAxisRaw("Horizontal");
+        moveForward   = Input.GetAxisRaw("Vertical");
+
+        // Debug or check your input
+        // Debug.Log($"Horizontal: {moveHorizontal}\nVertical: {moveForward}");
+
+        // Update animator blend-tree parameters
+        animator.SetFloat("horizontal", moveHorizontal);
+        //animator.SetFloat("vertical",   moveForward);
+
+        // Jump
+        if (Input.GetButtonDown("Jump") && isGrounded)
+        {
+            Jump();
+        }
+
+        // Ground Check
+        if (!isGrounded && groundCheckTimer <= 0f)
+        {
+            Vector3 rayOrigin = transform.position + Vector3.up * 0.1f;
+            isGrounded = Physics.Raycast(rayOrigin, Vector3.down, raycastDistance, groundLayer);
+
+            if (moveForward > 0)
+            {
+                animator.SetTrigger("landingRollTrigger");
+            }
+
+            animator.SetBool("inAir", !isGrounded);
+        }
+        else
+        {
+            groundCheckTimer -= Time.deltaTime;
+        }
+    }
+
     void FixedUpdate()
     {
-        // Handle movement
-        float moveX = Input.GetAxis("Horizontal"); // A/D or Left/Right arrow keys
-        float moveZ = Input.GetAxis("Vertical");   // W/S or Up/Down arrow keys
-        
-        jumpForce = 0;
-
         /*
-        NEED TO CHECK COLLISION WITH PLAYER AND GROUND/TERRAIN. IF TRUE, SET isGrounded to true, else false
+        // If you want zero movement control in the air, keep this condition.
+        // Otherwise, remove it if you want partial air control.
+        if (isGrounded)
+        {
+            MovePlayer();
+        }
         */
 
-        if (Input.GetButton("Jump")){
-            rb.linearVelocity =  new Vector3(rb.linearVelocity.x, jumpForce, rb.linearVelocity.z);
-            Debug.Log("Jump");
+        if (Input.GetKey(KeyCode.LeftShift) && (moveHorizontal != 0 || moveForward != 0)){
+            Debug.Log("Left Shift Pressed");
+            moveSpeed = runSpeed;
+            animator.SetFloat("vertical", 1.0f);
+        }
+        else{
+            Debug.Log("Left Shift Not Pressed");
+            moveSpeed = walkSpeed;
+            animator.SetFloat("vertical", moveForward / 2);
         }
 
-        Vector3 movement = new Vector3(moveX, 0, moveZ);
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        MovePlayer();
+
+        ApplyJumpPhysics();
     }
 
-    // Detect collisions with the ground
-    private void OnCollisionEnter(Collision collision)
+    void MovePlayer()
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        // 1. Flatten camera direction so player moves on horizontal plane
+        Vector3 cameraForward = cameraTransform.forward;
+        cameraForward.y = 0f;
+        cameraForward.Normalize();
+
+        Vector3 cameraRight = cameraTransform.right;
+        cameraRight.y = 0f;
+        cameraRight.Normalize();
+
+        // 2. Build movement direction using camera-based forward/right
+        Vector3 movement = (cameraRight * moveHorizontal + cameraForward * moveForward).normalized;
+        Vector3 targetVelocity = movement * moveSpeed;
+
+        // Update animator for forward speed (optional)
+        animator.SetFloat("zSpeed", targetVelocity.z);
+
+        // This makes it so that the camera does not rotate the character model when the player is walking. 
+        // Want to change it so that it camera also does not change the direction the character moving when walking.
+        /*
+        if (movement.magnitude > 0.1f && moveSpeed == runSpeed)
         {
-            isGrounded = true;
+            Quaternion targetRotation = Quaternion.LookRotation(movement);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 10f * Time.deltaTime);
+        }
+        */
+
+        if (movement.magnitude > 0.1f)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(movement);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 10f * Time.deltaTime);
+        }
+
+        // 3. Apply velocity with friction if no input
+        if (moveForward != 0 || moveHorizontal != 0) // If input is detected
+        {
+            // Replace linearVelocity -> velocity if you see errors
+            rb.linearVelocity = new Vector3(targetVelocity.x, rb.linearVelocity.y, targetVelocity.z);
+        }
+        else
+        {
+            // Apply friction by smoothly reducing velocity
+            rb.linearVelocity = new Vector3(
+                Mathf.Lerp(rb.linearVelocity.x, 0, friction * Time.fixedDeltaTime),
+                rb.linearVelocity.y,
+                Mathf.Lerp(rb.linearVelocity.z, 0, friction * Time.fixedDeltaTime)
+            );
         }
     }
 
-    private void OnCollisionExit(Collision collision)
+    void Jump()
     {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            isGrounded = false;
-        }
+        isGrounded = false;
+        groundCheckTimer = groundCheckDelay;
+        rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpForce, rb.linearVelocity.z);
+        animator.SetTrigger("jumpTrigger");
     }
 
+    void ApplyJumpPhysics()
+    {
+        // If using linearVelocity, keep it consistent. Otherwise use rb.velocity if you prefer.
+        if (rb.linearVelocity.y < 0) // Falling
+        {
+            rb.linearVelocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.fixedDeltaTime;
+        }
+        else if (rb.linearVelocity.y > 0) // Rising
+        {
+            rb.linearVelocity += Vector3.up * Physics.gravity.y * (ascendMultiplier - 1) * Time.fixedDeltaTime;
+        }
+    }
 }
