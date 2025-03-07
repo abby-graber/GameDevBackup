@@ -399,6 +399,8 @@
 -analyzer:"/Applications/Unity/Hub/Editor/6000.0.33f1/Unity.app/Contents/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll"
 -analyzer:"/Applications/Unity/Hub/Editor/6000.0.33f1/Unity.app/Contents/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 -analyzer:"/Applications/Unity/Hub/Editor/6000.0.33f1/Unity.app/Contents/Tools/Unity.SourceGenerators/Unity.UIToolkit.SourceGenerator.dll"
+"Assets/Mountain Terrain rocks and tree/Script/Camera/CameraControl.cs"
+"Assets/Mountain Terrain rocks and tree/Script/Camera/FlyCameraControl.cs"
 "Assets/Scripts/FollowPlayer.cs"
 "Assets/Scripts/MovementScriptTest.cs"
 "Assets/Scripts/PlayerController.cs"
