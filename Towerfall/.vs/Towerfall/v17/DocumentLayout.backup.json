@@ -1,0 +1,134 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\User123\\GameDev\\Towerfall\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{41043DC7-6EA7-3C14-AB89-BED9107EE957}|Assembly-CSharp.csproj|c:\\users\\user123\\gamedev\\towerfall\\assets\\scripts\\bossailevel3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41043DC7-6EA7-3C14-AB89-BED9107EE957}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\bossailevel3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41043DC7-6EA7-3C14-AB89-BED9107EE957}|Assembly-CSharp.csproj|c:\\users\\user123\\gamedev\\towerfall\\assets\\scripts\\timedplatform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41043DC7-6EA7-3C14-AB89-BED9107EE957}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\timedplatform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41043DC7-6EA7-3C14-AB89-BED9107EE957}|Assembly-CSharp.csproj|C:\\Users\\User123\\GameDev\\Towerfall\\assets\\scripts\\onewayplatform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41043DC7-6EA7-3C14-AB89-BED9107EE957}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\onewayplatform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41043DC7-6EA7-3C14-AB89-BED9107EE957}|Assembly-CSharp.csproj|C:\\Users\\User123\\GameDev\\Towerfall\\assets\\scripts\\breakableplatform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41043DC7-6EA7-3C14-AB89-BED9107EE957}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\breakableplatform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41043DC7-6EA7-3C14-AB89-BED9107EE957}|Assembly-CSharp.csproj|C:\\Users\\User123\\GameDev\\Towerfall\\assets\\scripts\\playerattack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41043DC7-6EA7-3C14-AB89-BED9107EE957}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playerattack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41043DC7-6EA7-3C14-AB89-BED9107EE957}|Assembly-CSharp.csproj|C:\\Users\\User123\\GameDev\\Towerfall\\assets\\scripts\\movingplatform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41043DC7-6EA7-3C14-AB89-BED9107EE957}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\movingplatform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\User123\\OneDrive\\Desktop\\Towerfall\\BossAI.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BossAILevel3.cs",
+              "DocumentMoniker": "C:\\Users\\User123\\GameDev\\Towerfall\\Assets\\Scripts\\BossAILevel3.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\BossAILevel3.cs",
+              "ToolTip": "C:\\Users\\User123\\GameDev\\Towerfall\\Assets\\Scripts\\BossAILevel3.cs",
+              "RelativeToolTip": "Assets\\Scripts\\BossAILevel3.cs",
+              "ViewState": "AgIAAE0AAAAAAAAAAAAIwGgAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-13T15:07:03.762Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BreakablePlatform.cs",
+              "DocumentMoniker": "C:\\Users\\User123\\GameDev\\Towerfall\\Assets\\Scripts\\BreakablePlatform.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\BreakablePlatform.cs",
+              "ToolTip": "C:\\Users\\User123\\GameDev\\Towerfall\\Assets\\Scripts\\BreakablePlatform.cs",
+              "RelativeToolTip": "Assets\\Scripts\\BreakablePlatform.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-13T14:44:58.191Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PlayerAttack.cs",
+              "DocumentMoniker": "C:\\Users\\User123\\GameDev\\Towerfall\\Assets\\Scripts\\PlayerAttack.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerAttack.cs",
+              "ToolTip": "C:\\Users\\User123\\GameDev\\Towerfall\\Assets\\Scripts\\PlayerAttack.cs",
+              "RelativeToolTip": "Assets\\Scripts\\PlayerAttack.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAQwB8AAABOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-13T14:33:23.99Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TimedPlatform.cs",
+              "DocumentMoniker": "C:\\Users\\User123\\GameDev\\Towerfall\\Assets\\Scripts\\TimedPlatform.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\TimedPlatform.cs",
+              "ToolTip": "C:\\Users\\User123\\GameDev\\Towerfall\\Assets\\Scripts\\TimedPlatform.cs",
+              "RelativeToolTip": "Assets\\Scripts\\TimedPlatform.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-13T14:09:27.507Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "OneWayPlatform.cs",
+              "DocumentMoniker": "C:\\Users\\User123\\GameDev\\Towerfall\\Assets\\Scripts\\OneWayPlatform.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\OneWayPlatform.cs",
+              "ToolTip": "C:\\Users\\User123\\GameDev\\Towerfall\\Assets\\Scripts\\OneWayPlatform.cs",
+              "RelativeToolTip": "Assets\\Scripts\\OneWayPlatform.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-13T00:53:23.498Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "BossAI.cs",
+              "DocumentMoniker": "C:\\Users\\User123\\OneDrive\\Desktop\\Towerfall\\BossAI.cs",
+              "RelativeDocumentMoniker": "..\\..\\OneDrive\\Desktop\\Towerfall\\BossAI.cs",
+              "ToolTip": "C:\\Users\\User123\\OneDrive\\Desktop\\Towerfall\\BossAI.cs",
+              "RelativeToolTip": "..\\..\\OneDrive\\Desktop\\Towerfall\\BossAI.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-12T22:58:56.734Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MovingPlatform.cs",
+              "DocumentMoniker": "C:\\Users\\User123\\GameDev\\Towerfall\\Assets\\Scripts\\MovingPlatform.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MovingPlatform.cs",
+              "ToolTip": "C:\\Users\\User123\\GameDev\\Towerfall\\Assets\\Scripts\\MovingPlatform.cs",
+              "RelativeToolTip": "Assets\\Scripts\\MovingPlatform.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAQwAQAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-12T22:53:17.651Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
