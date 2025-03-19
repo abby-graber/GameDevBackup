@@ -1,0 +1,45 @@
+# Ignore system-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore Unity auto-generated folders
+Library/
+Logs/
+Temp/
+obj/
+UserSettings/
+
+# Ignore Build folders (generated game builds)
+Build/
+Builds/
+
+# Ignore Unity Package Manager downloaded packages
+Packages/com.unity.*
+Packages/packages-lock.json
+
+# Keep only essential package configurations (manifest.json needed for Unity to re-download packages)
+!Packages/manifest.json
+
+# Ignore Visual Studio/JetBrains IDE files
+.vscode/
+*.sln
+*.csproj
+*.unityproj
+*.pidb
+*.suo
+*.user
+*.booproj
+*.svd
+
+# Ignore Lightmap, GI Cache, and Shader Cache (regenerates on build)
+Library/ShaderCache/
+Library/GICache/
+Library/Artifacts/
+
+# Ignore local cache files
+*.tmp
+*.bak
+*.swp
+*.lock
+*.log
+*.~*
