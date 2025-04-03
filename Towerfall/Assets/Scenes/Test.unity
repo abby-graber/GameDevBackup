@@ -320,6 +320,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -8608382393946811622, guid: 993d219d6c1be49a58e858921eec35c0, type: 3}
+      propertyPath: RotatingSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: -8484358824848872478, guid: 993d219d6c1be49a58e858921eec35c0, type: 3}
       propertyPath: m_Height
       value: 1.877275

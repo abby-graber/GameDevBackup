@@ -17,6 +17,10 @@ public class CharacterMovementManager : MonoBehaviour {
 	public float FallingThreshold = 6.0f;
 	public float Gravity = 20.0f;
 
+	private float zSpeedVelocity = 0f;
+	private float xSpeedVelocity = 0f;
+	public float speedSmoothTime = 0.1f; 
+
 	private CharacterController _characterController;
 	private RPGCamera _rpgCamera;
 	private Vector3 _playerDirection;
@@ -29,7 +33,9 @@ public class CharacterMovementManager : MonoBehaviour {
 
 	public KeyCode SprintKey = KeyCode.LeftShift;
 
-	public Animator animator;
+	private Animator animator;
+
+	private Rigidbody rb;
 
 	private bool _autorun = false;
 
@@ -38,6 +44,9 @@ public class CharacterMovementManager : MonoBehaviour {
 		_rpgCamera = GetComponent<RPGCamera>();
 		_characterController.slopeLimit = SlidingThreshold + 0.2f;
 		animator = GetComponent<Animator>();
+		rb = GetComponent<Rigidbody>();
+
+        rb.freezeRotation = true;
 
 		try {
 			Input.GetButton ("Horizontal Strafe");
@@ -71,6 +80,7 @@ public class CharacterMovementManager : MonoBehaviour {
 		if (Input.GetMouseButton (1) && Input.GetAxisRaw ("Horizontal") != 0) {
 			horizontalStrafe = horizontal;
 			horizontal = 0f;
+			Debug.Log("strafe");
 		}
 		// Create and set the player's direction inside the motor
 		Vector3 playerDirection = new Vector3 (horizontalStrafe, 0, vertical);
@@ -85,7 +95,8 @@ public class CharacterMovementManager : MonoBehaviour {
 			AlignCharacterWithCamera ();
 
 		// Check if the sprint modifier is pressed down
-		//_rpgMotor.Sprint(Input.GetKey(SprintKey));
+		_sprinting = Input.GetKey(SprintKey);
+
 		// Check if the jump button is pressed down
 		if (Input.GetButtonDown ("Jump")) {
 			Jump ();
@@ -93,6 +104,23 @@ public class CharacterMovementManager : MonoBehaviour {
 		#endregion
 
 		StartMotor ();
+		
+		Vector3 localVelocity = transform.InverseTransformDirection(_characterController.velocity);
+
+		//animator.SetFloat("zSpeed", localVelocity.z/ (WalkSpeed * SprintSpeedMultiplier));
+        //animator.SetFloat("xSpeed", localVelocity.x/ StrafeSpeed);
+
+		float targetZSpeed = localVelocity.z / (WalkSpeed * SprintSpeedMultiplier);
+		float targetXSpeed = localVelocity.x / StrafeSpeed;
+
+		// Interpolate speeds smoothly
+		float smoothedZSpeed = Mathf.SmoothDamp(animator.GetFloat("zSpeed"), targetZSpeed, ref zSpeedVelocity, speedSmoothTime);
+		float smoothedXSpeed = Mathf.SmoothDamp(animator.GetFloat("xSpeed"), targetXSpeed, ref xSpeedVelocity, speedSmoothTime);
+
+		// Apply to Animator
+		animator.SetFloat("zSpeed", smoothedZSpeed);
+		animator.SetFloat("xSpeed", smoothedXSpeed);
+
 	}
 
 	public void StartMotor() {
@@ -113,11 +141,14 @@ public class CharacterMovementManager : MonoBehaviour {
 				if(_playerDirection.z < 0f){		//walking backwards
 					combinedSpeed = (StrafeSpeed * Mathf.Abs(_playerDirection.x) + (WalkSpeed / 2f) * Mathf.Abs(_playerDirection.z))
 						/ (Mathf.Abs(_playerDirection.x) + Mathf.Abs(_playerDirection.z));
+					//Debug.Log("Walking back");
 				}else{
 					combinedSpeed = (StrafeSpeed * Mathf.Abs(_playerDirection.x) + WalkSpeed * Mathf.Abs(_playerDirection.z))
 						/ (Mathf.Abs(_playerDirection.x) + Mathf.Abs(_playerDirection.z));
+					//Debug.Log("walking forward");
 				}
 			}
+
 
 			// Apply the combined speed
 			_playerDirectionWorld *= combinedSpeed;
@@ -210,7 +241,7 @@ public class CharacterMovementManager : MonoBehaviour {
 	}
 
 	public void SetLocalRotation(float rotation, bool withCamera = false) {
-		_localRotation = Mathf.Clamp(rotation * RotatingSpeed,-45,45);
+		_localRotation = rotation * RotatingSpeed;
 
 		if (_rpgCamera && withCamera)
 			_rpgCamera.Rotate(rotation * RotatingSpeed);

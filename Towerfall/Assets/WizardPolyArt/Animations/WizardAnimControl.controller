@@ -605,8 +605,8 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: xSpeed
     m_Mirror: 0
-  m_BlendParameter: horizontal
-  m_BlendParameterY: vertical
+  m_BlendParameter: xSpeed
+  m_BlendParameterY: zSpeed
   m_MinThreshold: 0
   m_MaxThreshold: 1
   m_UseAutomaticThresholds: 1
