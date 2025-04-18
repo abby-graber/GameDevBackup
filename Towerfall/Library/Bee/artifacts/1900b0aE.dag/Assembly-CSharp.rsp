@@ -411,6 +411,7 @@
 "Assets/Mountain Terrain rocks and tree/Script/Camera/FlyCameraControl.cs"
 "Assets/Scripts/BossAILevel3.cs"
 "Assets/Scripts/BreakablePlatform.cs"
+"Assets/Scripts/FallingResetScene.cs"
 "Assets/Scripts/FollowPlayer.cs"
 "Assets/Scripts/MovementScriptTest.cs"
 "Assets/Scripts/MovingPlatform.cs"
@@ -422,6 +423,7 @@
 "Assets/Scripts/PlayerController.cs"
 "Assets/Scripts/PlayerHealth.cs"
 "Assets/Scripts/TimedPlatform.cs"
+"Assets/Scripts/TimedPlatformWithRespawn.cs"
 "Assets/test.cs"
 -langversion:9.0
 /deterministic
