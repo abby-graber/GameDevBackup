@@ -33,6 +33,8 @@ public class CharacterMovementManager : MonoBehaviour {
 
 	public KeyCode SprintKey = KeyCode.LeftShift;
 
+	[SerializeField] private AudioClip jumpSound;
+
 	private Animator animator;
 
 	private Rigidbody rb;
@@ -213,6 +215,7 @@ public class CharacterMovementManager : MonoBehaviour {
 		if (_characterController.isGrounded)
 			animator.SetTrigger("jumpTrigger");
 			_jump = true;
+			SoundFXManager.instance.PlaySoundFXClip(jumpSound, transform, 1f);
 	}
 
 	public void Sprint(bool on) {

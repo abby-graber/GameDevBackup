@@ -420,7 +420,6 @@
 "Assets/Scripts/Platform Scripts/TimedPlatformWithRespawn.cs"
 "Assets/Scripts/Player Scripts/FallingResetScene.cs"
 "Assets/Scripts/Player Scripts/FollowPlayer.cs"
-"Assets/Scripts/Player Scripts/MovementScriptTest.cs"
 "Assets/Scripts/Player Scripts/PlayerAttack.cs"
 "Assets/Scripts/Player Scripts/PlayerController.cs"
 "Assets/Scripts/Player Scripts/PlayerHealth.cs"
