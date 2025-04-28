@@ -96,12 +96,12 @@ public class MovementController : MonoBehaviour
         */
 
         if (Input.GetKey(KeyCode.LeftShift) && (moveHorizontal != 0 || moveForward != 0)){
-            Debug.Log("Left Shift Pressed");
+            //Debug.Log("Left Shift Pressed");
             moveSpeed = runSpeed;
             animator.SetFloat("vertical", 1.0f);
         }
         else{
-            Debug.Log("Left Shift Not Pressed");
+            //Debug.Log("Left Shift Not Pressed");
             moveSpeed = walkSpeed;
             animator.SetFloat("vertical", moveForward / 2);
         }

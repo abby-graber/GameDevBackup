@@ -413,6 +413,7 @@
 "Assets/Scripts/New Camera/CharacterMovementManager.cs"
 "Assets/Scripts/New Camera/RPGCamera.cs"
 "Assets/Scripts/New Camera/RPGClipPlane.cs"
+"Assets/Scripts/Platform Scripts/BouncePlatform.cs"
 "Assets/Scripts/Platform Scripts/BreakablePlatform.cs"
 "Assets/Scripts/Platform Scripts/MovingPlatform.cs"
 "Assets/Scripts/Platform Scripts/OneWayPlatform.cs"

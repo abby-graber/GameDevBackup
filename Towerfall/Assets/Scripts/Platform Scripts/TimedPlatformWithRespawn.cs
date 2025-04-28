@@ -23,7 +23,7 @@ public class TimedPlatform1 : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Player Collided");
+            //Debug.Log("Player Collided");
             Invoke(nameof(StartFadeOut), disappearTime);
         }
     }
@@ -32,7 +32,7 @@ public class TimedPlatform1 : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Player leaving timed platform");
+            //Debug.Log("Player leaving timed platform");
             // Optionally trigger reappearance
             Invoke(nameof(StartFadeIn), disappearTime + 2f); // Add a delay after fade out
         }

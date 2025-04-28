@@ -20,10 +20,10 @@ public class TimedPlatform : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collision Detected");
+        //Debug.Log("Collision Detected");
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Player Collided");
+            //Debug.Log("Player Collided");
             Invoke(nameof(StartFadeOut), disappearTime);
         }
     }
